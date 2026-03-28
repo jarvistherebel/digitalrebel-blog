@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Building a 10% Daily Trading Bot | Digital Rebel</title>
+  <meta name="description" content="Complete breakdown of my aggressive trading bot. Strategy, risk management, tech stack, and performance metrics.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="../index.html" class="nav-brand">Digital<span>Rebel</span></a>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li><a href="../blog.html">Blog</a></li>
+        <li><a href="../projects.html">Projects</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Article Header -->
+  <header class="article-header">
+    <div class="container">
+      <span class="article-label">Trading & Automation</span>
+      <h1>Building a 10% Daily Trading Bot</h1>
+      <p class="article-meta">The complete technical breakdown of my aggressive trading system</p>
+    </div>
+  </header>
+
+  <!-- Article Content -->
+  <article class="article-content">
+    <div class="container">
+      
+      <div class="warning-box">
+        <strong>⚠️ Risk Warning</strong>
+        <p>This is a high-risk trading strategy. Past performance doesn't guarantee future results. I'm sharing this for educational purposes. Never trade with money you can't afford to lose.</p>
+      </div>
+
+      <h2>The Goal</h2>
+      <p>Build an automated trading system that targets 10%+ daily returns across crypto and forex markets. Aggressive? Yes. Possible? Let's find out.</p>
+
+      <h2>The Strategy Stack</h2>
+
+      <h3>1. Multi-Strategy Approach</h3>
+      <p>The bot doesn't rely on a single strategy. It combines:</p>
+      
+      <h4>Momentum Chasing (40% of signals)</h4>
+      <ul>
+        <li>Identify strong trends using EMA crossovers</li>
+        <li>Enter on pullbacks to moving averages</li>
+        <li>Ride trends with trailing stops</li>
+        <li>Best in: Strong trending markets</li>
+      </ul>
+
+      <h4>Mean Reversion (35% of signals)</h4>
+      <ul>
+        <li>RSI oversold (< 30) for buys, overbought (> 70) for sells</li>
+        <li>Bollinger Band bounces</li>
+        <li>Quick 2-5% scalps</li>
+        <li>Best in: Ranging, choppy markets</li>
+      </ul>
+
+      <h4>Sentiment Boost (25% of signals)</h4>
+      <ul>
+        <li>CryptoPanic API for news sentiment</li>
+        <li>Social volume spikes</li>
+        <li>Fear/greed indicators</li>
+        <li>Best in: News-driven moves</li>
+      </ul>
+
+      <h2>Risk Management</h2>
+
+      <p>This is where most bots fail. Here's my approach:</p>
+
+      <h3>Position Sizing</h3>
+      <ul>
+        <li><strong>Max 5% per trade</strong> - Never bet the farm</li>
+        <li><strong>Max 20% total exposure</strong> - Always keep cash</li>
+        <li><strong>Scaling in:</strong> 2% initial, add 1% on confirmation</li>
+      </ul>
+
+      <h3>Stop Losses</h3>
+      <ul>
+        <li><strong>Hard stop:</strong> 2% loss per trade (automatic)</li>
+        <li><strong>Trailing stop:</strong> 1.5% below highest price</li>
+        <li><strong>Time stop:</strong> Close if no move in 4 hours</li>
+      </ul>
+
+      <h3>Portfolio Protection</h3>
+      <ul>
+        <li><strong>Daily loss limit:</strong> 5% max drawdown = stop trading</li>
+        <li><strong>Correlation check:</strong> Don't hold similar assets</li>
+        <li><strong>Volatility filter:</strong> Skip if ATR > threshold</li>
+      </ul>
+
+      <h2>Tech Stack</h2>
+
+      <h3>Core Technologies</h3>
+      <table>
+        <tr>
+          <th>Component</th>
+          <th>Technology</th>
+          <th>Why</th>
+        </tr>
+        <tr>
+          <td>Language</td>
+          <td>Python 3.12</td>
+          <td>Best for data/finance libraries</td>
+        </tr>
+        <tr>
+          <td>Exchange API</td>
+          <td>CCXT</td>
+          <td>Universal exchange interface</td>
+        </tr>
+        <tr>
+          <td>Exchange</td>
+          <td>Kraken</td>
+          <td>Low fees, reliable API</td>
+        </tr>
+        <tr>
+          <td>Data Analysis</td>
+          <td>Pandas, NumPy</td>
+          <td>Industry standard</td>
+        </tr>
+        <tr>
+          <td>Sentiment</td>
+          <td>CryptoPanic API</td>
+          <td>Real-time crypto news</td>
+        </tr>
+      </table>
+
+      <h3>Architecture</h3>
+      <pre><code>┌─────────────────────────────────────┐
+│         Trading Bot Loop            │
+│           (Every 3 min)             │
+└─────────────────────────────────────┘
+                  │
+    ┌─────────────┼─────────────┐
+    ▼             ▼             ▼
+┌────────┐  ┌──────────┐  ┌──────────┐
+│ Price  │  │ Technical│  │ Sentiment│
+│ Fetch  │  │ Analysis │  │ Analysis │
+└────────┘  └──────────┘  └──────────┘
+    │             │             │
+    └─────────────┼─────────────┘
+                  ▼
+        ┌─────────────────┐
+        │ Signal Generator│
+        │ (Buy/Sell/Hold) │
+        └─────────────────┘
+                  │
+                  ▼
+        ┌─────────────────┐
+        │ Risk Manager    │
+        │ (Size, Stops)   │
+        └─────────────────┘
+                  │
+                  ▼
+        ┌─────────────────┐
+        │ Execute Trade   │
+        │ (If approved)   │
+        └─────────────────┘
+                  │
+                  ▼
+        ┌─────────────────┐
+        │ Log & Monitor   │
+        └─────────────────┘</code></pre>
+
+      <h2>Performance Metrics</h2>
+
+      <p>I track everything. Here are the key metrics:</p>
+
+      <h3>Primary KPIs</h3>
+      <ul>
+        <li><strong>Daily P&L:</strong> Target 10%, track actual</li>
+        <li><strong>Win Rate:</strong> % of profitable trades</li>
+        <li><strong>Profit Factor:</strong> Gross profit / gross loss</li>
+        <li><strong>Sharpe Ratio:</strong> Risk-adjusted returns</li>
+        <li><strong>Max Drawdown:</strong> Largest peak-to-trough decline</li>
+      </ul>
+
+      <h3>Secondary Metrics</h3>
+      <ul>
+        <li>Average win vs average loss</li>
+        <li>Trade frequency by strategy</li>
+        <li>Best/worst performing assets</li>
+        <li>Fee impact on returns</li>
+        <li>Slippage analysis</li>
+      </ul>
+
+      <h2>The Dashboard</h2>
+
+      <p>Real-time monitoring is crucial. My dashboard shows:</p>
+
+      <h3>Live View</h3>
+      <ul>
+        <li>Current P&L and balance</li>
+        <li>Open positions with stops</li>
+        <li>Recent trades</li>
+        <li>Active signals</li>
+        <li>Market sentiment</li>
+      </ul>
+
+      <h3>Historical View</h3>
+      <ul>
+        <li>Daily/weekly/monthly performance</li>
+        <li>Strategy breakdown</li>
+        <li>Asset performance</li>
+        <li>Risk metrics over time</li>
+      </ul>
+
+      <h2>Automation & Monitoring</h2>
+
+      <h3>Auto-Restart</h3>
+      <p>If the bot crashes, it auto-restarts within 60 seconds. No manual intervention needed.</p>
+
+      <h3>Heartbeat Alerts</h3>
+      <p>Every 20 minutes, the bot sends a status update. If I don't hear from it, I investigate.</p>
+
+      <h3>Logging</h3>
+      <p>Everything is logged:</p>
+      <ul>
+        <li>Every trade (entry, exit, P&L)</li>
+        <li>Every signal (even if not acted on)</li>
+        <li>Errors and exceptions</li>
+        <li>Performance snapshots</li>
+      </ul>
+
+      <h2>Current Status</h2>
+
+      <div class="highlight-box">
+        <h4>Live Performance</h4>
+        <ul>
+          <li><strong>Status:</strong> Running (Paper Trading)</li>
+          <li><strong>Balance:</strong> $10,000</li>
+          <li><strong>P&L:</strong> 0.00%</li>
+          <li><strong>Trades:</strong> 0</li>
+          <li><strong>Runtime:</strong> Just restarted</li>
+        </ul>
+      </div>
+
+      <h2>Lessons Learned</h2>
+
+      <h3>What I Got Wrong</h3>
+      <ul>
+        <li><strong>Over-optimization:</strong> Curve-fitting to past data</li>
+        <li><strong>Ignoring fees:</strong> High-frequency = high costs</li>
+        <li><strong>No risk limits:</strong> Letting losses run</li>
+        <li><strong>Single strategy:</strong> Markets change, strategies break</li>
+      </ul>
+
+      <h3>What I Got Right</h3>
+      <ul>
+        <li><strong>Paper trading first:</strong> Prove it works before real money</li>
+        <li><strong>Multiple strategies:</strong> Adapt to market conditions</li>
+        <li><strong>Strict risk management:</strong> Preserve capital above all</li>
+        <li><strong>Full automation:</strong> Remove emotion from trading</li>
+      </ul>
+
+      <h2>Future Improvements</h2>
+
+      <p>What's on the roadmap:</p>
+      <ol>
+        <li><strong>Machine learning:</strong> Pattern recognition for entries</li>
+        <li><strong>More assets:</strong> Stocks, commodities, forex pairs</li>
+        <li><strong>Portfolio optimization:</strong> Modern portfolio theory</li>
+        <li><strong>Backtesting engine:</strong> Test strategies on historical data</li>
+        <li><strong>Mobile alerts:</strong> Push notifications for key events</li>
+      </ol>
+
+      <h2>Code & Resources</h2>
+
+      <p>Want to build your own? Here's what you need:</p>
+
+      <h3>Essential Libraries</h3>
+      <pre><code>pip install ccxt pandas numpy requests</code></pre>
+
+      <h3>Key Skills</h3>
+      <ul>
+        <li>Python programming</li>
+        <li>Technical analysis basics</li>
+        <li>Risk management principles</li>
+        <li>API integration</li>
+        <li>Data analysis</li>
+      </ul>
+
+      <h3>Recommended Reading</h3>
+      <ul>
+        <li>"Trading Evolved" by Andreas Clenow</li>
+        <li>"Advances in Financial Machine Learning" by Marcos López de Prado</li>
+        <li>r/algotrading community</li>
+      </ul>
+
+      <div class="cta-box">
+        <h3>Follow My Journey</h3>
+        <p>I'll be sharing weekly performance updates, strategy tweaks, and lessons learned. Subscribe to follow along.</p>
+        <a href="../contact.html" class="btn btn-primary">Subscribe</a>
+      </div>
+
+    </div>
+  </article>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 Digital Rebel. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
