@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>I Built a Trading Bot: Here's What Happened - Digital Rebel</title>
+  <meta name="description" content="The real story of building an automated trading bot from scratch - wins, losses, and lessons learned.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="container">
+      <a href="../index.html" class="nav-brand">Digital<span>Rebel</span></a>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li><a href="../blog.html">Blog</a></li>
+        <li><a href="../projects.html">Projects</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <section class="post-hero">
+    <div class="container">
+      <div class="fade-in">
+        <div class="post-meta">
+          <span style="color:var(--cyan); font-weight:600;">Automation</span>
+          <span>March 15, 2026</span>
+          <span>10 min read</span>
+        </div>
+        <h1>I Built a Trading Bot: Here's What Happened</h1>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <div class="post-content fade-in">
+        <p>A few months ago, I decided to build an automated trading bot. Not because I thought I'd get rich overnight, but because I wanted to understand the intersection of AI, automation, and financial markets.</p>
+        <p>Here's the honest, unfiltered story of what happened.</p>
+
+        <h2>Why Build a Trading Bot?</h2>
+        <p>I'm an automation junkie. If something can be automated, I want to automate it. Trading seemed like the perfect candidate - it's data-driven, rule-based (in theory), and runs 24/7. Plus, I was already interested in crypto markets.</p>
+
+        <h2>The Tech Stack</h2>
+        <p>I built the bot in Python because it has the best ecosystem for this kind of thing:</p>
+        <ul>
+          <li><strong>Python</strong> - Core language</li>
+          <li><strong>ccxt</strong> - Exchange connectivity</li>
+          <li><strong>pandas</strong> - Data analysis</li>
+          <li><strong>Custom sentiment analysis</strong> - Using AI to gauge market mood</li>
+          <li><strong>Technical indicators</strong> - RSI, MACD, moving averages</li>
+        </ul>
+
+        <h2>The Strategy</h2>
+        <p>I started with a simple approach: combine technical indicators with sentiment analysis. The idea was that technical analysis alone misses the human element, while sentiment alone misses the chart patterns. Together, they'd give a more complete picture.</p>
+
+        <h2>What Went Right</h2>
+        <p>The bot actually worked. It executed trades automatically, managed risk with stop-losses, and ran 24/7 without intervention. The sentiment analysis added a genuinely useful signal - it caught several moves that pure technical analysis would have missed.</p>
+
+        <h2>What Went Wrong</h2>
+        <p>Plenty. The first version had a bug that placed orders at the wrong size. Fortunately, I caught it during paper trading. Slippage was worse than expected on smaller exchanges. And the bot occasionally got confused by sudden market moves that didn't match any historical pattern.</p>
+
+        <blockquote>The market humbles everyone eventually. The goal isn't to be right all the time - it's to make more when you're right than you lose when you're wrong.</blockquote>
+
+        <h2>Lessons Learned</h2>
+        <ol>
+          <li><strong>Paper trade first.</strong> Always. I found three critical bugs during paper trading that would have cost real money.</li>
+          <li><strong>Risk management is everything.</strong> The strategy matters less than how much you risk per trade.</li>
+          <li><strong>Markets are humbling.</strong> No matter how good your system is, there will be losing streaks.</li>
+          <li><strong>Automation doesn't mean hands-off.</strong> You still need to monitor, adjust, and improve.</li>
+          <li><strong>Start small.</strong> Even when you're confident, start with minimal position sizes.</li>
+        </ol>
+
+        <h2>What's Next</h2>
+        <p>The bot is still running and I'm actively improving it. I'm working on better sentiment analysis, more sophisticated position sizing, and multi-exchange support. I'll keep sharing updates on the blog.</p>
+
+        <p><em>Interested in algorithmic trading? <a href="../contact.html">Get in touch</a> - always happy to chat about automation and markets.</em></p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div>
+          <div class="footer-brand">Digital<span>Rebel</span></div>
+          <p>&copy; 2026 Chris Hall. All rights reserved.</p>
+        </div>
+        <div class="footer-links">
+          <a href="../about.html">About</a>
+          <a href="../blog.html">Blog</a>
+          <a href="../projects.html">Projects</a>
+          <a href="../contact.html">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
